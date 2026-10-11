@@ -416,3 +416,259 @@ h2 em{font-weight:500;color:var(--gold-2)}
 @media(max-width:650px){.hero-visual{height:min(92vw,495px)}.hero-grid{padding:65px 0 55px}.inner-hero-grid{grid-template-columns:1fr;padding:65px 0 48px;min-height:315px}.inner-hero h1{font-size:clamp(43px,9.6vw,66px)}.inner-intro{font-size:14px}.inner-hero-decor{display:none}.breadcrumb{padding:16px 0}.pathways-grid,.resources-grid,.boards-grid{grid-template-columns:1fr}.pathway-card{min-height:260px}.pathway-card h3{margin-top:25px}.cv-boards{grid-template-columns:1fr;gap:20px}.evidence-card{grid-template-columns:120px 1fr;min-height:330px}.evidence-photo{min-height:330px}.evidence-body{padding:21px 16px}.evidence-body h3{font-size:20px;margin:16px 0 8px}.evidence-body p{font-size:12px}.awards-list>div{grid-template-columns:65px 1fr;gap:5px 15px;padding:22px 4px}.awards-list strong{font-size:19px}.awards-list p{grid-column:2;font-size:12px}.additional-learning li{flex-wrap:wrap;gap:4px}.resources-grid a{min-height:145px}.contact-helper{margin-top:32px}}
 @media(max-width:380px){.evidence-card{grid-template-columns:1fr}.evidence-photo{height:170px;min-height:170px}.evidence-photo img{object-position:50% 34%}}
 @media print{.inner-hero{background:#fff;color:#111;padding-top:0}.inner-hero h1{font-size:44px}.inner-hero h1 em{color:#333}.inner-intro,.breadcrumb{color:#333}.inner-hero-decor{display:none}.inner-hero-grid{min-height:0;padding:20px 0}.site-footer{background:#fff;color:#111}.evidence-photo{display:none}.evidence-card{display:block;min-height:0}.board-card,.pathway-card{min-height:0}.board-card,.evidence-card,.degree-card,.paper{break-inside:avoid}}
+
+/* ==========================================================
+   COMPACT SPACING UPDATE — October 2026
+   Paste this entire block at the very END of styles.css.
+   Reduces extra vertical whitespace while keeping the design.
+   Affects Home, Leadership, Research, and Contact pages.
+   ========================================================== */
+
+/* Shared sections and headings */
+.section { padding: 78px 0; }                   /* was 120px */
+.section-heading { margin-bottom: 42px; }       /* was 67px */
+.kicker { margin-bottom: 16px; }                /* was 23px */
+.about-main h2,
+.research-intro h2,
+.contact-heading h2 { margin-bottom: 28px; }
+
+/* Homepage hero and biography */
+.hero { min-height: 680px; }
+.hero-grid { min-height: 590px; padding-block: 62px 38px; }
+.hero-overline { margin-top: 26px; }
+.hero-visual { height: min(500px, 43vw); }
+.hero-bottom { height: 60px; }
+.about-grid { gap: 45px; }
+.about-copy-grid { gap: 40px; }
+.snapshot-section { padding: 28px 0; }
+
+/* Homepage links to the other pages */
+.pathway-card { min-height: 290px; padding: 26px; }
+.pathway-card h3 { margin-top: 42px; }
+
+/* Page title banners */
+.inner-hero-grid { min-height: 310px; padding: 48px 0 38px; }
+.inner-hero h1 { margin: 10px 0 18px; }
+.breadcrumb { padding: 16px 0; }
+
+/* Experience and leadership */
+.timeline-item { padding: 25px 0; }
+.timeline-rule::before { height: calc(100% + 51px); top: -26px; }
+.impact-top { margin-bottom: 42px; }
+.impact-card { min-height: 255px; padding: 23px; }
+.impact-symbol { height: 54px; }
+.boards-grid { margin: 20px 0 46px; }
+.board-card { min-height: 155px; padding: 25px; }
+.board-card h3 { margin-top: 23px; }
+.cv-boards { padding-top: 32px; gap: 55px; }
+
+/* Research, education, appointments, and awards */
+.research-grid { gap: 65px; }
+.research-topics { margin: 21px 0 23px; }
+.publications-header { padding: 13px 0; }
+.paper { padding: 19px 4px 17px; }
+.education-heading { margin-bottom: 38px; }
+.degree-card { min-height: 225px; padding: 23px 25px; }
+.additional-learning { margin-top: 30px; padding-top: 30px; }
+.evidence-card, .evidence-photo { min-height: 320px; }
+.evidence-body { padding: 26px 24px 22px; }
+.evidence-body h3 { margin-top: 16px; }
+.awards-list > div { padding: 20px 10px; }
+
+/* Contact and common footer */
+.contact-grid { gap: 70px; }
+.contact-option { padding: 18px 0; }
+.contact-helper { margin-top: 35px; }
+.contact-location { margin-top: 24px; }
+.perspective-section { padding: 65px 0; }
+.perspective-grid { gap: 65px; }
+.site-footer { padding: 36px 0 24px; }
+.footer-top { padding-bottom: 34px; }
+
+/* Tablet layout */
+@media (max-width: 850px) {
+  .section { padding: 63px 0; }
+  .section-heading, .impact-top { margin-bottom: 34px; }
+  .hero { min-height: 0; }
+  .hero-grid { min-height: 0; padding: 57px 0 38px; }
+  .hero-visual { height: 440px; }
+  .inner-hero-grid { min-height: 270px; padding: 40px 0 32px; }
+  .research-grid { gap: 35px; }
+  .contact-grid { gap: 35px; }
+  .pathway-card { min-height: 270px; }
+  .pathway-card h3 { margin-top: 30px; }
+  .impact-card { min-height: 235px; }
+  .board-card { min-height: 145px; }
+  .perspective-grid { gap: 28px; }
+}
+
+/* Phone layout */
+@media (max-width: 650px) {
+  .section { padding: 48px 0; }               /* was 70px */
+  .section-heading, .impact-top { margin-bottom: 27px; }
+  .kicker { margin-bottom: 13px; }
+  .about-main h2 { margin-bottom: 20px; }
+  .about-grid { gap: 18px; }
+  .about-copy-grid { gap: 13px; }
+  .hero-grid { padding: 44px 0 32px; gap: 30px; }
+  .hero-overline { margin-top: 19px; }
+  .hero-visual { height: min(88vw, 470px); }
+  .hero-bottom { height: 54px; }
+  .snapshot-section { padding: 23px 0; }
+  .inner-hero-grid { min-height: 0; padding: 45px 0 34px; }
+  .inner-hero h1 { margin-bottom: 14px; }
+  .breadcrumb { padding: 13px 0; }
+  .pathway-card { min-height: 225px; padding: 22px; }
+  .pathway-card h3 { margin-top: 23px; }
+  .timeline-item { padding: 19px 0; }
+  .impact-card { min-height: 0; padding: 19px; }
+  .board-card { min-height: 130px; padding: 22px; }
+  .board-card h3 { margin-top: 17px; }
+  .cv-boards { gap: 18px; }
+  .degree-card { min-height: 190px; }
+  .additional-learning { margin-top: 24px; padding-top: 24px; }
+  .evidence-card, .evidence-photo { min-height: 280px; }
+  .evidence-body { padding: 20px 16px; }
+  .contact-grid { gap: 23px; }
+  .contact-option { padding: 16px 0; }
+  .contact-helper { margin-top: 25px; }
+  .perspective-section { padding: 49px 0; }
+  .site-footer { padding: 30px 0 20px; }
+  .footer-top { padding-bottom: 24px; }
+}
+
+/* Preserve compact, ink-friendly print spacing */
+@media print {
+  .section { padding: 30px 0; }
+  .hero { min-height: 0; }
+  .hero-grid { min-height: 0; padding: 20px 0; }
+  .inner-hero-grid { min-height: 0; padding: 20px 0; }
+}
+
+/* ==========================================================
+   COMPACT SPACING UPDATE — October 2026
+   Paste this entire block at the very END of styles.css.
+   Reduces extra vertical whitespace while keeping the design.
+   Affects Home, Leadership, Research, and Contact pages.
+   ========================================================== */
+
+/* Shared sections and headings */
+.section { padding: 78px 0; }                   /* was 120px */
+.section-heading { margin-bottom: 42px; }       /* was 67px */
+.kicker { margin-bottom: 16px; }                /* was 23px */
+.about-main h2,
+.research-intro h2,
+.contact-heading h2 { margin-bottom: 28px; }
+
+/* Homepage hero and biography */
+.hero { min-height: 680px; }
+.hero-grid { min-height: 590px; padding-block: 62px 38px; }
+.hero-overline { margin-top: 26px; }
+.hero-visual { height: min(500px, 43vw); }
+.hero-bottom { height: 60px; }
+.about-grid { gap: 45px; }
+.about-copy-grid { gap: 40px; }
+.snapshot-section { padding: 28px 0; }
+
+/* Homepage links to the other pages */
+.pathway-card { min-height: 290px; padding: 26px; }
+.pathway-card h3 { margin-top: 42px; }
+
+/* Page title banners */
+.inner-hero-grid { min-height: 310px; padding: 48px 0 38px; }
+.inner-hero h1 { margin: 10px 0 18px; }
+.breadcrumb { padding: 16px 0; }
+
+/* Experience and leadership */
+.timeline-item { padding: 25px 0; }
+.timeline-rule::before { height: calc(100% + 51px); top: -26px; }
+.impact-top { margin-bottom: 42px; }
+.impact-card { min-height: 255px; padding: 23px; }
+.impact-symbol { height: 54px; }
+.boards-grid { margin: 20px 0 46px; }
+.board-card { min-height: 155px; padding: 25px; }
+.board-card h3 { margin-top: 23px; }
+.cv-boards { padding-top: 32px; gap: 55px; }
+
+/* Research, education, appointments, and awards */
+.research-grid { gap: 65px; }
+.research-topics { margin: 21px 0 23px; }
+.publications-header { padding: 13px 0; }
+.paper { padding: 19px 4px 17px; }
+.education-heading { margin-bottom: 38px; }
+.degree-card { min-height: 225px; padding: 23px 25px; }
+.additional-learning { margin-top: 30px; padding-top: 30px; }
+.evidence-card, .evidence-photo { min-height: 320px; }
+.evidence-body { padding: 26px 24px 22px; }
+.evidence-body h3 { margin-top: 16px; }
+.awards-list > div { padding: 20px 10px; }
+
+/* Contact and common footer */
+.contact-grid { gap: 70px; }
+.contact-option { padding: 18px 0; }
+.contact-helper { margin-top: 35px; }
+.contact-location { margin-top: 24px; }
+.perspective-section { padding: 65px 0; }
+.perspective-grid { gap: 65px; }
+.site-footer { padding: 36px 0 24px; }
+.footer-top { padding-bottom: 34px; }
+
+/* Tablet layout */
+@media (max-width: 850px) {
+  .section { padding: 63px 0; }
+  .section-heading, .impact-top { margin-bottom: 34px; }
+  .hero { min-height: 0; }
+  .hero-grid { min-height: 0; padding: 57px 0 38px; }
+  .hero-visual { height: 440px; }
+  .inner-hero-grid { min-height: 270px; padding: 40px 0 32px; }
+  .research-grid { gap: 35px; }
+  .contact-grid { gap: 35px; }
+  .pathway-card { min-height: 270px; }
+  .pathway-card h3 { margin-top: 30px; }
+  .impact-card { min-height: 235px; }
+  .board-card { min-height: 145px; }
+  .perspective-grid { gap: 28px; }
+}
+
+/* Phone layout */
+@media (max-width: 650px) {
+  .section { padding: 48px 0; }               /* was 70px */
+  .section-heading, .impact-top { margin-bottom: 27px; }
+  .kicker { margin-bottom: 13px; }
+  .about-main h2 { margin-bottom: 20px; }
+  .about-grid { gap: 18px; }
+  .about-copy-grid { gap: 13px; }
+  .hero-grid { padding: 44px 0 32px; gap: 30px; }
+  .hero-overline { margin-top: 19px; }
+  .hero-visual { height: min(88vw, 470px); }
+  .hero-bottom { height: 54px; }
+  .snapshot-section { padding: 23px 0; }
+  .inner-hero-grid { min-height: 0; padding: 45px 0 34px; }
+  .inner-hero h1 { margin-bottom: 14px; }
+  .breadcrumb { padding: 13px 0; }
+  .pathway-card { min-height: 225px; padding: 22px; }
+  .pathway-card h3 { margin-top: 23px; }
+  .timeline-item { padding: 19px 0; }
+  .impact-card { min-height: 0; padding: 19px; }
+  .board-card { min-height: 130px; padding: 22px; }
+  .board-card h3 { margin-top: 17px; }
+  .cv-boards { gap: 18px; }
+  .degree-card { min-height: 190px; }
+  .additional-learning { margin-top: 24px; padding-top: 24px; }
+  .evidence-card, .evidence-photo { min-height: 280px; }
+  .evidence-body { padding: 20px 16px; }
+  .contact-grid { gap: 23px; }
+  .contact-option { padding: 16px 0; }
+  .contact-helper { margin-top: 25px; }
+  .perspective-section { padding: 49px 0; }
+  .site-footer { padding: 30px 0 20px; }
+  .footer-top { padding-bottom: 24px; }
+}
+
+/* Preserve compact, ink-friendly print spacing */
+@media print {
+  .section { padding: 30px 0; }
+  .hero { min-height: 0; }
+  .hero-grid { min-height: 0; padding: 20px 0; }
+  .inner-hero-grid { min-height: 0; padding: 20px 0; }
+}
