@@ -4,8 +4,8 @@
   const menuToggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.site-nav');
   const progress = document.querySelector('.reading-progress');
-  const sections = [...document.querySelectorAll('main section[id]')];
-  const navLinks = [...document.querySelectorAll('.site-nav a[href^="#"]')];
+  const sections = [];
+  const navLinks = [];
 
   function setMenu(open) {
     menuToggle.classList.toggle('is-open', open);
@@ -16,7 +16,7 @@
   }
 
   menuToggle.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
-  navLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
+  [...document.querySelectorAll('.site-nav a')].forEach(link => link.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenu(false); });
   document.addEventListener('click', event => {
     if (nav.classList.contains('is-open') && !event.target.closest('.header-inner')) setMenu(false);
