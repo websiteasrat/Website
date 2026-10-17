@@ -1,51 +1,41 @@
 (() => {
   'use strict';
+  document.documentElement.classList.add('js-enabled');
   const header = document.querySelector('.site-header');
-  const menuToggle = document.querySelector('.menu-toggle');
+  const toggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('.site-nav');
   const progress = document.querySelector('.reading-progress');
-  const sections = [];
-  const navLinks = [];
-
-  function setMenu(open) {
-    menuToggle.classList.toggle('is-open', open);
-    menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+  const mobile = window.matchMedia('(max-width: 1100px)');
+  function setMenu(open, restoreFocus = false) {
+    if (!toggle || !nav) return;
+    toggle.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     nav.classList.toggle('is-open', open);
-    document.body.classList.toggle('menu-open', open);
+    if (restoreFocus) toggle.focus();
   }
-
-  menuToggle.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
-  [...document.querySelectorAll('.site-nav a')].forEach(link => link.addEventListener('click', () => setMenu(false)));
-  document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenu(false); });
-  document.addEventListener('click', event => {
-    if (nav.classList.contains('is-open') && !event.target.closest('.header-inner')) setMenu(false);
+  toggle?.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+  nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') setMenu(false, true);
   });
-
+  document.addEventListener('click', event => {
+    if (!event.target.closest('.header-inner')) setMenu(false);
+  });
+  header?.addEventListener('focusout', event => {
+    if (!header.contains(event.relatedTarget)) setMenu(false);
+  });
+  mobile.addEventListener('change', () => setMenu(false));
   let scheduled = false;
   function updateScroll() {
-    const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
-    progress.style.transform = `scaleX(${Math.min(1, window.scrollY / maxScroll)})`;
-    header.classList.toggle('is-scrolled', window.scrollY > 28);
-    const scrollPoint = window.scrollY + window.innerHeight * .32;
-    let active = '';
-    sections.forEach(section => { if (section.offsetTop <= scrollPoint) active = section.id; });
-    navLinks.forEach(link => {
-      const selected = link.getAttribute('href') === `#${active}`;
-      link.classList.toggle('active', selected);
-      if (selected) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
-    });
+    const max = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    if (progress) progress.style.transform = `scaleX(${Math.min(1, Math.max(0, window.scrollY / max))})`;
+    header?.classList.toggle('is-scrolled', window.scrollY > 28);
     scheduled = false;
   }
-  window.addEventListener('scroll', () => { if (!scheduled) { requestAnimationFrame(updateScroll); scheduled = true; } }, { passive: true });
+  window.addEventListener('scroll', () => {
+    if (!scheduled) { requestAnimationFrame(updateScroll); scheduled = true; }
+  }, { passive: true });
   window.addEventListener('resize', updateScroll);
   updateScroll();
-
-  const elements = document.querySelectorAll('[data-reveal]');
-  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); } });
-    }, { threshold: .06, rootMargin: '0px 0px 45px 0px' });
-    elements.forEach(el => { el.classList.add('reveal-ready'); observer.observe(el); });
-  }
 })();
